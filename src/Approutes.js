@@ -14,9 +14,10 @@ function Approutes() {
   
   const searching=(anime)=>{
       const newsearch=myAnimelist.filter((data, index)=>{
-        return search.match==anime.mal_id
+        return search.data.match==anime.mal_id
       })
       setsearch(newsearch)
+     
   }
 
   const addTo=(anime)=>{
@@ -39,9 +40,11 @@ function Approutes() {
     const res= await fetch('https://api.jikan.moe/v4/anime')
     const resData= await res.json()
     setAnimeData(resData.data)
+    
   }
   useEffect(()=>{
     getData()
+    
   },[search])
   return(
 <>
@@ -67,16 +70,17 @@ function Approutes() {
             setAnimeInfo={setAnimeInfo}
             Addlistcomponent={AnimeTodo}
             handlelist={(anime)=>addTo(anime)}
+            
             />
           </div>
-         {/*  <h2 className='text-heading'>my List</h2>   
+          <h2 className='text-heading'>my List</h2>   
           <div className='row'>
             <AnimeList 
             animelist={AnimeData}
             setAnimeInfo={setAnimeInfo}
             Addlistcomponent={RemoveList}
             handlelist={(anime)=>removefrom(anime)}
-            /> */}
+            />
           </div>
         </div>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -93,55 +97,10 @@ function Approutes() {
     </li>
   </ul>
 </nav>
-  
-  
-      {/* //footetr started */}
-     <div className="bd-footer py-5 mt-5 bg-secondary">
-            <div className='container'>
-              <h6>Gopichand</h6>
-              <div className='row'>
-                <div className="col-6 col-lg-2 offset-1 mb-3">
-                  <ul className='un-styled'>
-                    <li>Anime</li>
-                    <li>Naruto</li>
-                    <li>trige</li>
-                    <li>kidotai</li>
-                    <li>Neon</li>
-                  </ul>
-                </div>
-                <div className='col-3 mb-3'>
-                <ul className='un-styled'>
-                    <li>Anime</li>
-                    <li>Naruto</li>
-                    <li>trige</li>
-                    <li>kidotai</li>
-                    <li>Neon</li>
-                  </ul>
-                </div>
-               <div className='col-3'>
-                <ul className='un-styled'>
-                    <li>Anime</li>
-                    <li>Naruto</li>
-                    <li>trige</li>
-                    <li>kidotai</li>
-                    <li>Neon</li>
-                  </ul>
-                </div>
-                <div className='col-3 mb-3'>
-                <ul className='un-styled'>
-                    <li>Anime</li>
-                    <li>Naruto</li>
-                    <li>trige</li>
-                    <li>kidotai</li>
-                    <li>Neon</li>
-                  </ul>
-                </div>
-              </div>
-             
-            </div>
-     </div>
-
-    </>
+  </div>
+  </>
+     
+ 
   )
 }
 
